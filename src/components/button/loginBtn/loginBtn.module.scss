@@ -1,0 +1,19 @@
+.loginBtn {
+    border : 1px solid #5D5A88 ;
+    border-radius : 1.5rem ;
+    color : #5D5A88 ;
+    cursor : pointer ;
+    font-size : 1.2rem;
+    padding: .5rem 2rem;
+    margin : 0 1rem ;
+    width : 90%;
+    background-color : #ffffff;
+    text-align : center ;
+    user-select : none ;
+    transition : all 0.3s ease-in-out ;
+    &:hover {
+        background-color : #5D5A88 ;
+        color : #ffffff ;
+    }
+
+}
