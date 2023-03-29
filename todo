@@ -1,3 +1,13 @@
 faire des variables css pour les couleurs, les tailles, les polices, le body, le conteneur, et le et les flex généraux.
 
 Faire plutot un changement de class css plutot qu'un hover css sur le menu déroulant.
+
+faire des loading et finish au login, prévoir les message d'erreur pour sur l'adresse mail et le mot de passe
+
+Faire le map sur mes users
+
+Faire une route check token pour récuperer le user
+
+faire des variable css pour les font-size
+
+es build

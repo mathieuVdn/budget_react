@@ -1,4 +1,4 @@
-.signUpBtn {
+.redirectBtn {
   all: unset;
   width: 48%;
   padding: 1rem 1rem;
@@ -14,7 +14,6 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-
     background-color: #ffffff;
     color: #5D5A88;
     border: 1px solid #5D5A88;

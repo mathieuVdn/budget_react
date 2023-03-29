@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --violet: #5D5A88;
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #d2e4fa;
+  --turquoise: #00748D;
+  --jaune-orange: #CB8606;
+  --gris-clair: #f9f9f9;
+  --texte: #414141;
+
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+h1 {
+  color: var(--violet);
+  font-size: 4rem;
+  font-weight: 700;
+  /*text-transform: uppercase;*/
+  letter-spacing: 0.2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 6rem auto;
+  font-variant: small-caps;
+}
+
+h2 {
+  color: var(--violet);
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin: 2rem 0;
+}
+
+h3 {
+  color: var(--violet);
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin: 2rem 0;
+}
+
+p {
+  color: var(--violet);
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding: 0;
+  text-align: left;
+  margin: 1rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  & .labelBox {
+    position: relative;
+    width: 100%;
+
+    & input {
+      width: 100%;
+      padding: 1rem 0;
+      font-size: 1.6rem;
+      color: var(--violet);
+      margin-bottom: 3rem;
+      border: none;
+      border-bottom: 1px solid var(--violet);
+      outline: none;
+      background: transparent;
+
+      &:focus ~ label,
+      &:valid ~ label {
+        top: -2rem;
+        left: 0;
+        color: var(--violet);
+        font-size: 1.2rem;
+      }
+    }
+
+    & label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 1rem 0;
+      font-size: 1.8rem;
+      color: var(--violet);
+      pointer-events: none;
+      transition: .5s;
+    }
+
+  }
+}
