@@ -1,10 +1,11 @@
 import React from 'react';
 import mc from './signUpBtn.module.scss';
+import {NavLink} from "react-router-dom";
 
 const SignUpBtn = (props) => {
-    return (
-        <button className={mc.signUpBtn} type="button" onClick={ () => console.log('salut')}>{props.name}</button>
-    );
+    const {namebtn, number} = props
+
+    return (<NavLink to={'/sign-up'} className={mc.signUpBtn} type="button">{namebtn} {number}</NavLink>);
 };
 
 export default SignUpBtn;

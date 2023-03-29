@@ -1,12 +1,7 @@
-.flexAi {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 header {
   width: 100%;
   background-color: #fff;
+  margin: 1.5rem 0;
   padding: 1rem 0;
   display: flex;
   justify-content: space-between;
@@ -14,40 +9,46 @@ header {
   font-family: 'DM Sans', sans-serif;
 
   & .logo {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #5D5A88;
-    text-decoration: none;
-    padding: 0 1rem;
     display: flex;
     align-items: center;
-    width : 20%;
+    width: 20%;
+    padding: 0 1rem;
+    margin-left: 2rem;
 
-    & img{
+    & .title {
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: #5D5A88;
+      text-decoration: none;
+    }
+
+    & img {
       width: 30px;
       height: 30px;
       margin-right: 1rem;
-      }
     }
+  }
 
   & .navbar {
-    width : 40%;
+    width: 40%;
+
     & ul {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       list-style: none;
       padding: 0;
-      margin: 0;
-
+      margin: 1rem 0;
 
       & li {
-        padding: 0 1rem;
+        padding: 0;
+
         & a {
           text-decoration: none;
           color: #5D5A88;
-          font-size: 1.1rem;
+          font-size: 1.8rem;
           font-weight: 300;
+
           &:hover {
             text-decoration: underline;
           }
@@ -55,24 +56,35 @@ header {
       }
     }
   }
+
   & .login {
-    width : 22%;
+    width: 25%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  & .account {
+    width: 22%;
+    margin-right: 5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   & .dropMenuNav {
     position: relative;
+
     & .dropMenu {
       position: absolute;
       top: 100%;
-      left: 0;
-      background-color: #fff;
-      width: 12rem  ;
+      left: -2.5rem;
+      background-color: #ffffff;
+      width: 17rem;
       padding: 1rem 0;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       display: none;
+
       & ul {
         display: flex;
         flex-direction: column;
@@ -81,12 +93,16 @@ header {
         list-style: none;
         padding: .5rem 1rem;
         margin: 0;
+        z-index: 1;
+
         & li {
           padding: .5rem 1rem;
+
           & a {
             text-decoration: none;
             color: #5D5A88;
-            font-size: 1.1rem;
+            font-size: 1.6rem;
+
             &:hover {
               text-decoration: underline;
             }
@@ -94,6 +110,7 @@ header {
         }
       }
     }
+
     &:hover {
       .dropMenu {
         display: block;

@@ -1,0 +1,17 @@
+.dashboard {
+  width: 100%;
+  padding: 2rem 4rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  border-radius: 2rem;
+
+  & > article {
+    & > h2 {
+      text-align: left;
+    }
+
+    & > p {
+      letter-spacing: .07rem;
+      margin: 1.5rem 0;
+    }
+  }
+}
