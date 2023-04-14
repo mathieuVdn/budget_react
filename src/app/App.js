@@ -5,6 +5,7 @@ import About from "../components/about/About";
 import SignUp from "../components/signup/SignUp";
 import Dashboard from "../components/dashboard/Dashboard";
 import Account from "../components/account/Account";
+import Envelope from "../components/envelope/epargne/Envelope";
 
 const App = () => {
 
@@ -17,6 +18,8 @@ const App = () => {
                 <Route path="/sign-up" element={<SignUp/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="account" element={<Account/>} />
+                <Route path="envelope" element={<Envelope/>} />
+
             </Routes>
         </div>
     );

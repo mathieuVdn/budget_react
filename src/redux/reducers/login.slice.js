@@ -9,8 +9,7 @@ export const signIn = createAsyncThunk("/users/sign-in", async (form, thunkApi) 
     console.log(result)
     const token = result.user.token
     setItem("token", token)
-    const user_id = result.user.id
-    setItem("user_id", user_id)
+    console.log(result.user)
     return error ? rejectWithValue(`Cannot sign in - Error status ${status} - ${error}`) : fulfillWithValue(result);
 });
 
@@ -21,9 +20,9 @@ export const loginSlice = createSlice({
         email: "",
         password: "",
         finish: false,
-        user: [],
-        error: "",
-        token: false
+        persistUser: {},
+        errorSignIn: "",
+        logged: false,
     }, reducers: {
         changeMail: (state, action) => {
             return {...state, email: action.payload};
@@ -32,16 +31,19 @@ export const loginSlice = createSlice({
             return {...state, password: action.payload};
         },
         logout: (state) => {
-            return {...state, token: false, finish: false, email : "", password : ""};
+            return {...state, logged: false, finish: false, email : "", password : ""};
+        },
+        updatePersistUser: (state, action) => {
+            return {...state, persistUser: action.payload};
         }
 
     }, extraReducers: (builder) => {
         builder
             .addCase(signIn.fulfilled, (state, action) => {
-                return {...state, loading: false, finish: true, token: true};
+                return {...state, loading: false, finish: true, logged: true, persistUser: action.payload.user};
             })
             .addCase(signIn.rejected, (state, action) => {
-                return {...state, loading: false, finish: false, error: action.payload || "Something went wrong"};
+                return {...state, loading: false, finish: false, errorSignIn: action.payload};
             })
             .addCase(signIn.pending, (state, action) => {
                 return {...state, loading: true, finish: false};
@@ -49,6 +51,6 @@ export const loginSlice = createSlice({
     }
 });
 
-export const {changeMail, changePassword, logout} = loginSlice.actions;
+export const {changeMail, changePassword, logout, updatePersistUser} = loginSlice.actions;
 
 export default loginSlice.reducer;

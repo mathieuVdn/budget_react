@@ -65,10 +65,24 @@ header {
   }
   & .account {
     width: 22%;
-    margin-right: 5rem;
+    margin-right: 10rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    & .logout {
+      all: unset;
+      cursor: pointer;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color:  #5D5A88;
+      border: 1px solid #5D5A88;
+      border-radius: 2rem;
+      padding: .5rem 1rem;
+      &:hover {
+        background-color: #5D5A88;
+        color: #fff;
+      }
+    }
   }
 
   & .dropMenuNav {
@@ -77,9 +91,9 @@ header {
     & .dropMenu {
       position: absolute;
       top: 100%;
-      left: -2.5rem;
+      left: -5rem;
       background-color: #ffffff;
-      width: 17rem;
+      width: 20rem;
       padding: 1rem 0;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

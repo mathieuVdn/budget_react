@@ -4,21 +4,21 @@ import expand from "../../assets/img/expand.svg";
 import mc from "./header.module.scss";
 import SignUpBtn from "../button/signUpBtn/SignUpBtn";
 import LoginBtn from "../button/loginBtn/LoginBtn";
-import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../redux/reducers/login.slice";
 
 const Header = () => {
 
-    const token = useSelector((store) => store.login.token)
+    const {logged, persistUser} = useSelector((store) => store.persistedReducer)
     const dispatch = useDispatch()
-    const isLogged = !!localStorage.getItem('token')
+
     const userLogout = () => {
         localStorage.removeItem("token")
         dispatch(logout())
     }
 
-    return (<header>
+    return (
+        <header>
             <div className={mc.logo}>
                 <img src={logo} alt="Logo de envelope Pro"/>
                 <span className={mc.title}>EnvelopePro</span>
@@ -29,47 +29,46 @@ const Header = () => {
                     <li><NavLink to={"/about"}>A propos</NavLink></li>
                     <li><NavLink to={"/dashboard"}>Tableau de bord</NavLink></li>
                     <li className={mc.dropMenuNav}>
-                        <NavLink to={"/"} className="flexAi">
+                        <NavLink to={"/envelope"} className="flex ai-center">
                             Enveloppe
                             <img src={expand} alt="Icone de chevron vers le bas"/>
                         </NavLink>
                         <div className={mc.dropMenu}>
                             <ul>
-                                <li><NavLink to={"/"}>Mes épargnes</NavLink></li>
-                                <li><NavLink to={"/"}>Mes dépenses</NavLink></li>
-                                <li><NavLink to={"/"}>Mes défis</NavLink></li>
+                                <li><NavLink to={"/envelope"}>Mes épargnes</NavLink></li>
+                                <li><NavLink to={"/envelope"}>Mes dépenses</NavLink></li>
+                                <li><NavLink to={"/envelope"}>Mes défis</NavLink></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </nav>
-            {isLogged ?
-             <div className={` ${mc.account}`}>
-                        <div className={mc.dropMenuNav}>
-                            <div className={`flexAi`}>
-                                <p>{`Anastasia` }</p>
-                                <img src={expand} alt="Icone de chevron vers le bas"/>
-                            </div>
-                            <div className={mc.dropMenu}>
-                                <ul>
-                                    <li><NavLink to={"/account"}>Mon compte</NavLink></li>
-                                    <li>
-                                        <button
-                                        className={mc.logout}
-                                        onClick={() => userLogout()}>
-                                        Se déconnecter
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+            {logged ?
+             <div className={`${mc.account}`}>
+                <div className={mc.dropMenuNav}>
+                    <div className={`flex ai-center`}>
+                        <p>{`${persistUser.firstname}` }</p>
+                        <img src={expand} alt="Icone de chevron vers le bas"/>
                     </div>
-                 :
-
-                    <div className={`${mc.login}`}>
-                        <LoginBtn namebtn="Se connecter"/>
-                        <SignUpBtn namebtn="Rejoindre"/>
+                    <div className={mc.dropMenu}>
+                        <ul>
+                            <li><NavLink to={"/account"}>Mon compte</NavLink></li>
+                            <li>
+                                <button
+                                className={mc.logout}
+                                onClick={() => userLogout()}>
+                                Se déconnecter
+                                </button>
+                            </li>
+                        </ul>
                     </div>
+                </div>
+            </div>
+                :
+            <div className={`${mc.login}`}>
+                <LoginBtn namebtn="Se connecter"/>
+                <SignUpBtn namebtn="Rejoindre"/>
+            </div>
                 }
         </header>
 

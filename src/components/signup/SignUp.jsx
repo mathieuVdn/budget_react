@@ -41,12 +41,15 @@ const SignUp = () => {
     return (
         <main className={`${visible ? "overlay" : ""} container`}>
             {!visible ? <ModalLogin/> : null}
-            {loading ? <div className="loader"></div> : null}
 
             <h1>Rejoignez-nous et faites de vos économies une réalité</h1>
-            <div className={`flexAi`}>
+            <div className={`flex ai-center jc-space-between`}>
                 <img src={bannerDataAnalyze} alt="illustration d'un graphique "/>
+                {loading ? <div className="loader"></div> : null}
+                {finish ? <h3>Merci d'avoir créer un compte</h3> :
+
                 <div className={`${mc.signUpForm}`}>
+
                     <h2>Créer un compte</h2>
                     <form onSubmit={e => (handleSignUp(e))}>
                         <div className={`labelBox`}>
@@ -76,6 +79,7 @@ const SignUp = () => {
                         < LoginBtn namebtn="Se connecter"/>
                     </form>
                 </div>
+                }
             </div>
         </main>
     );

@@ -3,20 +3,17 @@ import React, {useEffect, useState} from "react";
 import {getUser, updateUser} from "../../redux/reducers/user.slice";
 import {useDispatch, useSelector} from "react-redux";
 import {updateUserEmail, updateUserName, updateUserFirstName} from "../../redux/reducers/user.slice";
-
+import {updatePersistUser} from "../../redux/reducers/login.slice";
 
 const Account = () => {
     const dispatch = useDispatch()
     const [changePassword, setChangePassword] = useState(false)
-    const userId = localStorage.getItem('user_id')
+    const {persistUser} = useSelector((store) => store.persistedReducer)
+    const{user} = useSelector((store) => store.user)
 
     useEffect(() => {
-        if (!userId) return
-        dispatch(getUser(userId))
-    }, [dispatch, userId])
-
-    const{user} = useSelector((store) => store.user)
-    console.log(user)
+        dispatch(getUser(persistUser.id))
+    }, [dispatch, persistUser.id])
     const handleName = (e) => {
         dispatch(updateUserName(e.target.value))
     }
@@ -26,10 +23,12 @@ const Account = () => {
     const handleEmail = (e) => {
         dispatch(updateUserEmail(e.target.value))
     }
-    const handleUpdateUser = async (e) => {
+    const handleUpdateUser = async (e)   => {
         e.preventDefault()
+        console.log(user)
         await dispatch(updateUser(user))
-        await dispatch(getUser(userId))
+        await dispatch(getUser(persistUser.id))
+        await dispatch(updatePersistUser(user))
     }
 
     return (
@@ -68,21 +67,21 @@ const Account = () => {
                             />
                             <label htmlFor="name">Email</label>
                         </div>
-                                <button className={mc.update} type="submit">Mettre à jour</button>
+                                <input className={mc.update} type="submit" value={`Mettre à jour`}/>
                                 <button className={mc.update} type="button" onClick={() => setChangePassword(!changePassword)}>Changer de mot de passe</button>
                             </>
                             :
                             <>
                                 <div className={`labelBox`}>
-                                    <input type="password" required/>
+                                    <input type="password" required value={""}/>
                                     <label htmlFor="name">Mot de passe</label>
                                 </div>
                                 <div className={`labelBox`}>
-                                    <input type="password" required/>
+                                    <input type="password" required value={""}/>
                                     <label htmlFor="name">Confirmer le mot de passe</label>
                                 </div>
-                        <button className={mc.update} type="submit">Mettre à jour</button>
-                        <button className={mc.update} type="button" onClick={() => setChangePassword(!changePassword)}>Annuler les modificatoins</button>
+                        <input className={mc.update} type="submit" value={`Mettre à jour`}></input>
+                        <button className={mc.update} type="button" onClick={() => setChangePassword(!changePassword)}>Annuler les modifications</button>
                             </>}
                     </form>
                 </article>

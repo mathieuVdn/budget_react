@@ -8,6 +8,7 @@ import {changeMail, changePassword} from "../../redux/reducers/login.slice";
 import RedirectBtn from "../button/redirectBtn/RedirectBtn";
 
 const ModalLogin = () => {
+
     const dispatch = useDispatch();
     const handleMail = (mail) => {
         dispatch(changeMail(mail))
@@ -15,27 +16,29 @@ const ModalLogin = () => {
     const handlePassword = (password) => {
         dispatch(changePassword(password))
     }
-    const {loading, finish, user} = useSelector((store) => store.login)
 
+    const {loading, finish, errorSignIn} = useSelector((store) => store.persistedReducer)
+    const error = !!errorSignIn
     return (
         <div>
             <div className={mc.overlay} onClick={() => dispatch(toggleLoginModal())}></div>
-            <div className={mc.modalLogin}>
+            <div className={`${mc.modalLogin} flex flex-column ai-center jc-center`}>
                 {loading ? (
-                    <div className={'flexCol'}>
+                    <div className={'flex column'}>
                         <div className={`loader`}></div>
                         <p>Chargement en cours...</p>
                     </div>
                 ) : (
-                    <div className={mc.loginForm}>
+                    <div className={`${mc.loginForm}=`}>
                         {finish ? (
-                            <div className={`flexCol`}>
+                            <div className={`flex flex-column ai-center jc-center`}>
                                 <h2>Vous etes connecté avec succès !</h2>
                                 <RedirectBtn namebtn="C'est parti !"/>
                             </div>
                         ) : (
                             <div>
                                 <h2>Se connecter</h2>
+                                {!error ? <p className={mc.error}>Email ou mot de passe incorrect</p>  : null}
                                 <form>
                                     <div className={`labelBox`}>
                                         <input type="text" required onChange={(e) => handleMail(e.target.value)}/>

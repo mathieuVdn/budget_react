@@ -26,9 +26,9 @@ const putRequest = async (url, body = {}, token = null) => {
     const config = {
         method: "PUT",
         body: JSON.stringify(body),
+
         headers: {"Content-type": "application/json; charset=UTF-8"},
     };
-
     if (token) config.headers.Authorization = token;
 
     return await request(url, config);
@@ -37,6 +37,7 @@ const putRequest = async (url, body = {}, token = null) => {
 const deleteRequest = async (url, token = null) => {
     const config = {
         method: "DELETE",
+
         headers: {"Content-type": "application/json; charset=UTF-8"},
     };
 
@@ -68,4 +69,4 @@ const handleResponse = (status, result, error) => {
         error: hasError ? `Result is null ${error || ""}` : null,
     };
 };
-export {getRequest, postRequest, request, handleResponse, putRequest};
+export {getRequest, postRequest, request, handleResponse, putRequest, deleteRequest};
