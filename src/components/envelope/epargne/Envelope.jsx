@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import "./envelope.module.scss";
+import {NavLink} from "react-router-dom";
 import mc from "./envelope.module.scss";
 import {changeName, changeAmount, handleSelectEnvelope, changeNameSelectEnvelope, changeAmountSelectEnvelope} from "../../../redux/reducers/envelope.slice";
 import {getEnvelopes, createEnvelope, deleteEnvelope, updateEnvelope} from "../../../redux/reducers/envelope.slice";
@@ -58,8 +59,6 @@ const Envelope = () => {
         }
     };
 
-    console.log(selectedEnvelope)
-
     return (
         <div className={`container flex ai-center jc-space-between ai-baseline`} >
         <main className={`${mc.envelope}`} >
@@ -72,7 +71,9 @@ const Envelope = () => {
                            className={`${select === envelope.id ? mc.selected : null} ${mc.envelopeItem}`}>
                       <span className={mc.deleteCross} onClick={(e)=>handleDelete(e, envelope.id)}>x</span>
                         <h3>{envelope.name}</h3>
-                        <p>Objectif: {envelope.amount} €</p>
+                          <p>Objectif: {envelope.amount} €</p>
+                          <button className={`${mc.buttonOperation}`}><NavLink> Voir toutes les opérations</NavLink>
+                          </button>
                     </div>
                     )
                 }

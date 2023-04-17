@@ -54,6 +54,7 @@ const request = async (url, config) => {
         const response = await fetch(`${API_URL}${url}`, config);
         status = response.status;
         result = await response.json();
+        error = result.message;
     } catch (e) {
         error = e.message;
     } finally {
@@ -63,10 +64,12 @@ const request = async (url, config) => {
 
 const handleResponse = (status, result, error) => {
     const hasError = !result || status >= 400;
+    console.log(hasError, status, result, error)
     return {
         status,
         result: hasError ? null : result,
         error: hasError ? `Result is null ${error || ""}` : null,
+
     };
 };
 export {getRequest, postRequest, request, handleResponse, putRequest, deleteRequest};

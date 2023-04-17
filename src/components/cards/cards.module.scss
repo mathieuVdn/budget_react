@@ -3,4 +3,34 @@
   margin: 7rem -1rem;
   width: 30rem;
   border-radius: 2rem;
+
+  & a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+
+    & .redirectBtn {
+      all: unset;
+      width: 90%;
+      padding: 1rem 1rem;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 3rem;
+      border: 1px solid var(--violet);
+      border-radius: 2rem;
+      outline: none;
+      background: var(--violet);
+      cursor: pointer;
+      transition: .5s;
+
+      &:hover {
+        background: var(--white);
+        color: var(--violet);
+      }
+
+    }
+  }
+
 }

@@ -6,10 +6,10 @@ import {setItem} from "../../utils/storage.utils";
 export const signIn = createAsyncThunk("/users/sign-in", async (form, thunkApi) => {
     const {fulfillWithValue, rejectWithValue} = thunkApi;
     const {status, result, error} = await postRequest("/users/sign-in", form);
-    console.log(result)
     const token = result.user.token
     setItem("token", token)
-    console.log(result.user)
+    console.log(error)
+    console.log(rejectWithValue)
     return error ? rejectWithValue(`Cannot sign in - Error status ${status} - ${error}`) : fulfillWithValue(result);
 });
 
@@ -40,10 +40,18 @@ export const loginSlice = createSlice({
     }, extraReducers: (builder) => {
         builder
             .addCase(signIn.fulfilled, (state, action) => {
-                return {...state, loading: false, finish: true, logged: true, persistUser: action.payload.user};
+                return {
+                    ...state,
+                    loading: false,
+                    finish: true,
+                    logged: true,
+                    persistUser: action.payload.user,
+                    errorSignIn: ""
+                };
             })
             .addCase(signIn.rejected, (state, action) => {
-                return {...state, loading: false, finish: false, errorSignIn: action.payload};
+                console.log(action)
+                return {...state, loading: false, finish: false, errorSignIn: action.error};
             })
             .addCase(signIn.pending, (state, action) => {
                 return {...state, loading: true, finish: false};

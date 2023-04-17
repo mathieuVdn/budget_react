@@ -1,6 +1,7 @@
 import React from 'react';
 import mc from './cards.module.scss'
 import RedirectBtn from "../button/redirectBtn/RedirectBtn";
+import {NavLink} from "react-router-dom";
 
 const Cards = (props) => {
     const {name} = props
@@ -11,7 +12,9 @@ const Cards = (props) => {
                 <p> Objectifs réalisés : </p>
                 <p> Montant prévu :</p>
                 <p> Montant actuel :</p>
-                <RedirectBtn namebtn="Voir plus"/>
+                <NavLink to={"/envelope"}>
+                    <button className={`${mc.redirectBtn}`}>Voir Plus</button>
+                </NavLink>
             </div>
         </div>
     );

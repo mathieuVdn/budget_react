@@ -15,22 +15,24 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50rem;
-    height: 40rem;
+    height: 45rem;
     border-radius: 2rem;
-    padding: 2rem;
     z-index: 2;
 
+    & h2 {
+      margin: 0;
+    }
+
     & .error {
-        color: var(--red);
-        font-size: 1.4rem;
-        font-weight: 500;
-        margin: 1.5rem 0;
-        text-align: center;
+      color: var(--red);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 1.5rem 0;
+      text-align: center;
     }
 
     & > .loginForm {
       width: 70%;
-      margin-top: 3rem;
 
       & > .labelBox {
         margin-top: 3rem;

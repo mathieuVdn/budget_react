@@ -22,23 +22,23 @@ const ModalLogin = () => {
     return (
         <div>
             <div className={mc.overlay} onClick={() => dispatch(toggleLoginModal())}></div>
-            <div className={`${mc.modalLogin} flex flex-column ai-center jc-center`}>
+            <div className={`${mc.modalLogin} flex ai-center jc-center`}>
                 {loading ? (
-                    <div className={'flex column'}>
+                    <div className={'flex flex-column ai-center jc-center'}>
                         <div className={`loader`}></div>
                         <p>Chargement en cours...</p>
                     </div>
                 ) : (
-                    <div className={`${mc.loginForm}=`}>
+                    <div className={`${mc.loginForm} `}>
                         {finish ? (
                             <div className={`flex flex-column ai-center jc-center`}>
                                 <h2>Vous etes connecté avec succès !</h2>
                                 <RedirectBtn namebtn="C'est parti !"/>
                             </div>
                         ) : (
-                            <div>
+                            <div className={`flex flex-column ai-center jc-center`}>
                                 <h2>Se connecter</h2>
-                                {!error ? <p className={mc.error}>Email ou mot de passe incorrect</p>  : null}
+                                {error ? <p className={mc.error}>Email ou mot de passe incorrect</p> : null}
                                 <form>
                                     <div className={`labelBox`}>
                                         <input type="text" required onChange={(e) => handleMail(e.target.value)}/>
