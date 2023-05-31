@@ -1,75 +1,79 @@
-import {API_URL} from "../constants/constant.utils.js";
+import { API_URL } from "../constants/constant.utils.js";
 
 const getRequest = async (url, token = null) => {
-    const config = {
-        method: "GET",
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-    };
+  const config = {
+    method: "GET",
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  };
 
-    if (token) config.headers.Authorization = token;
+  if (token) config.headers.Authorization = token;
 
-    return await request(url, config);
+  return await request(url, config);
 };
 const postRequest = async (url, body = {}, token = null) => {
-    const config = {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {"Content-type": "application/json; charset=UTF-8"},
-    };
+  const config = {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  };
 
-    if (token) config.headers.Authorization = token;
+  if (token) config.headers.Authorization = token;
 
-    return await request(url, config);
+  return await request(url, config);
 };
 
 const putRequest = async (url, body = {}, token = null) => {
-    const config = {
-        method: "PUT",
-        body: JSON.stringify(body),
+  const config = {
+    method: "PUT",
+    body: JSON.stringify(body),
 
-        headers: {"Content-type": "application/json; charset=UTF-8"},
-    };
-    if (token) config.headers.Authorization = token;
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  };
+  if (token) config.headers.Authorization = token;
 
-    return await request(url, config);
-}
+  return await request(url, config);
+};
 
 const deleteRequest = async (url, token = null) => {
-    const config = {
-        method: "DELETE",
+  const config = {
+    method: "DELETE",
 
-        headers: {"Content-type": "application/json; charset=UTF-8"},
-    };
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  };
 
-    if (token) config.headers.Authorization = token;
+  if (token) config.headers.Authorization = token;
 
-    return await request(url, config);
-}
+  return await request(url, config);
+};
 const request = async (url, config) => {
-    let status = -1;
-    let error = null;
-    let result = null;
+  let status = -1;
+  let error = null;
+  let result = null;
 
-    try {
-        const response = await fetch(`${API_URL}${url}`, config);
-        status = response.status;
-        result = await response.json();
-        error = result.message;
-    } catch (e) {
-        error = e.message;
-    } finally {
-        return handleResponse(status, result, error);
-    }
+  try {
+    const response = await fetch(`${API_URL}${url}`, config);
+    status = response.status;
+    result = await response.json();
+    error = result.error;
+  } catch (e) {
+  } finally {
+    return handleResponse(status, result, error);
+  }
 };
 
 const handleResponse = (status, result, error) => {
-    const hasError = !result || status >= 400;
-    console.log(hasError, status, result, error)
-    return {
-        status,
-        result: hasError ? null : result,
-        error: hasError ? `Result is null ${error || ""}` : null,
-
-    };
+  const hasError = !result || status >= 400;
+  return {
+    status,
+    result: hasError ? null : result,
+    error: hasError ? `Result is null ${error}` : null,
+  };
 };
-export {getRequest, postRequest, request, handleResponse, putRequest, deleteRequest};
+export {
+  getRequest,
+  postRequest,
+  request,
+  handleResponse,
+  putRequest,
+  deleteRequest,
+};

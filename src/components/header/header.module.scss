@@ -1,12 +1,9 @@
-header {
+.header {
   width: 100%;
   background-color: #fff;
-  margin: 1.5rem 0;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 1.5rem;
+  padding: 2rem 0;
+  font-family: "DM Sans", sans-serif;
 
   & .logo {
     display: flex;
@@ -14,11 +11,12 @@ header {
     width: 20%;
     padding: 0 1rem;
     margin-left: 2rem;
+    text-decoration: none;
 
     & .title {
       font-size: 2.5rem;
       font-weight: 400;
-      color: #5D5A88;
+      color: #5d5a88;
       text-decoration: none;
     }
 
@@ -30,7 +28,13 @@ header {
   }
 
   & .navbar {
-    width: 40%;
+    width: 100%;
+    & .logoBurger {
+      display: none;
+    }
+    & nav {
+      width: 62%;
+    }
 
     & ul {
       display: flex;
@@ -45,7 +49,7 @@ header {
 
         & a {
           text-decoration: none;
-          color: #5D5A88;
+          color: #5d5a88;
           font-size: 1.8rem;
           font-weight: 300;
 
@@ -58,14 +62,20 @@ header {
   }
 
   & .login {
-    width: 25%;
+    width: 38%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  & .burger {
+    display: none;
+  }
+  & .closeBurger {
+    display: none;
+  }
   & .account {
-    width: 22%;
-    margin-right: 10rem;
+    width: 18%;
+    margin-right: 6rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -74,12 +84,12 @@ header {
       cursor: pointer;
       font-size: 1.6rem;
       font-weight: 300;
-      color:  #5D5A88;
-      border: 1px solid #5D5A88;
+      color: #5d5a88;
+      border: 1px solid #5d5a88;
       border-radius: 2rem;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       &:hover {
-        background-color: #5D5A88;
+        background-color: #5d5a88;
         color: #fff;
       }
     }
@@ -91,13 +101,14 @@ header {
     & .dropMenu {
       position: absolute;
       top: 100%;
-      left: -5rem;
+      left: -2.5rem;
       background-color: #ffffff;
       width: 20rem;
       padding: 1rem 0;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       display: none;
+      z-index: 1;
 
       & ul {
         display: flex;
@@ -105,16 +116,16 @@ header {
         align-items: center;
         justify-content: center;
         list-style: none;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         margin: 0;
         z-index: 1;
 
         & li {
-          padding: .5rem 1rem;
+          padding: 0.5rem 1rem;
 
           & a {
             text-decoration: none;
-            color: #5D5A88;
+            color: #5d5a88;
             font-size: 1.6rem;
 
             &:hover {
@@ -133,5 +144,142 @@ header {
   }
 }
 
+@media screen and (max-width: 1100px) {
+  .header {
+    justify-content: space-between;
+    position: fixed;
+    z-index: 2;
+    top: 0;
 
+    & .logo {
+      width: 95%;
+    }
 
+    & .burger {
+      width: 3rem;
+      margin-right: 2rem;
+      display: block;
+      cursor: pointer;
+
+      & .line {
+        width: 100%;
+        height: 3px;
+        background-color: #5d5a88;
+        margin: 0.5rem 0;
+      }
+    }
+    & .navbar {
+      position: absolute;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      right: -200vh;
+      background-color: var(--white);
+      z-index: 1;
+      transition: all 0.5s ease-in-out;
+
+      .logoNavbar {
+        width: 90%;
+        & .closeBurger {
+          display: block;
+          cursor: pointer;
+          font-size: 2rem;
+          font-weight: 400;
+          color: #5d5a88;
+          text-decoration: none;
+        }
+      }
+      & .logoBurger {
+        display: flex;
+        align-items: center;
+        margin: 3rem 0;
+        & .title {
+          font-size: 2.5rem;
+          font-weight: 400;
+          color: #5d5a88;
+          text-decoration: none;
+        }
+        & img {
+          width: 30px;
+          height: 30px;
+          margin-right: 1rem;
+        }
+      }
+      & nav {
+        width: 100%;
+        text-align: center;
+        font-size: 3rem;
+
+        & ul {
+          width: 100%;
+          flex-direction: column;
+          justify-content: center;
+          align-content: center;
+
+          & li {
+            margin: 1rem;
+            padding: 1rem;
+          }
+          & a {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+    .visibleBurger {
+      right: 0;
+    }
+    & .account {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: block;
+
+      & .logout {
+        all: unset;
+        cursor: pointer;
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: #5d5a88;
+        border: 1px solid #5d5a88;
+        border-radius: 2rem;
+        padding: 0.5rem 1rem;
+        &:hover {
+          background-color: #5d5a88;
+          color: #fff;
+        }
+      }
+    }
+    & .dropMenuNav {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      & p {
+        font-size: 3rem;
+      }
+      & img {
+        display: none;
+      }
+      & .dropMenu {
+        position: static;
+        top: 100%;
+        left: 0;
+        background-color: #ffffff;
+        width: 25rem;
+        padding: 1rem 0;
+        border-radius: 1rem;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        display: block;
+      }
+    }
+    & .login {
+      width: 90%;
+    }
+  }
+}

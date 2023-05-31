@@ -1,17 +1,90 @@
+main {
+
+
 .dashboard {
-  width: 100%;
-  padding: 2rem 4rem;
+  width: 95%;
+  padding: 2rem 3rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   border-radius: 2rem;
+  height: 50rem;
+  margin: 0 auto;
 
-  & > article {
-    & > h2 {
-      text-align: left;
+  & .dashboardStats {
+    text-align: left;
+  }
+  & .actionButton {
+    all: unset;
+    width: 60%;
+    color: #fff;
+    padding: 1rem 1rem;
+    margin: 2rem 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid transparent;
+    background-color: #5d5a88;
+    text-align: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #5d5a88;
+      border: 1px solid #5d5a88;
     }
+  }
 
-    & > p {
-      letter-spacing: .07rem;
-      margin: 1.5rem 0;
+  & .dashboardGraph {
+    width: 75%;
+    height: 30rem;
+  }
+}
+}
+
+@media screen and (max-width: 1100px) {
+  main {
+    & .dashboard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 98%;
+      margin: 0 auto;
+      height: 65rem;
+
+      .dashboardStatsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        & .dashboardStats {
+          width: 90%;
+        }
+
+        & .dashboardStatsType {
+          width: 100%;
+          text-align: left;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+        & .actionButton {
+          width: 90%;
+        }
+      }
+      & .dashboardGraph {
+        width: 100%;
+        height: 30rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  main {
+    & .dashboard {
+      height: 72rem;
     }
   }
 }

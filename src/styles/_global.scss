@@ -4,21 +4,18 @@
 
 :root {
   font-size: 62.5%;
-  --violet: #5D5A88;
+  --violet: #5d5a88;
+  --light-violet: #d6d6e1;
   --white: #ffffff;
   --black: #000000;
   --grey: #d2e4fa;
-  --turquoise: #00748D;
-  --jaune-orange: #CB8606;
-  --gris-clair: #f9f9f9;
-  --red : #D05353;
+  --red: #d05353;
   --texte: #414141;
-
 }
 
 body {
   font-size: 1.8rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 h1 {
@@ -40,7 +37,7 @@ h2 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  margin: 2rem 0;
+  margin: 2rem 2rem;
 }
 
 h3 {
@@ -102,8 +99,7 @@ form {
       font-size: 1.8rem;
       color: var(--violet);
       pointer-events: none;
-      transition: .5s;
+      transition: 0.5s;
     }
-
   }
 }

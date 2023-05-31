@@ -1,0 +1,112 @@
+.operationsContainer {
+
+.operations {
+  width: 70%;
+  margin: 0 2rem 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  & h2 {
+    color: var(--violet);
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 2rem 2rem;
+    padding: 0;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+
+  & table {
+    min-width: 100%;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    color: var(--violet);
+
+    & thead {
+      background-color: var(--violet);
+      color: var(--white);
+
+      & th {
+        padding: 1rem;
+        text-align: left;
+        border-right: 1px solid var(--violet);
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    & tbody {
+      & .selected {
+        background-color: var(--violet);
+        border: 1px solid var(--white);
+        color: var(--white);
+
+        &:nth-child(even) {
+          background-color: var(--violet);
+        }
+      }
+
+      & tr {
+        border-bottom: 1px solid var(--violet);
+        cursor: pointer;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:nth-child(even) {
+          background-color: var(--light-violet);
+        }
+
+        & td {
+          border-left: 1px solid var(--violet);
+          padding: 1rem;
+          text-align: left;
+          border-radius: 5rem;
+
+          &:first-child {
+            border-left: none;
+          }
+
+          &:last-child {
+            border-right: none;
+            border-left: none;
+            text-align: center;
+            vertical-align: center;
+          }
+
+          & img {
+            width: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+}
+@media screen and (max-width: 1100px) {
+  .operationsContainer {
+    align-items: center;
+
+  }
+}
+@media screen and (max-width: 768px) {
+  .operationsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & .operations {
+      margin-top: 9rem;
+      width: 90%;
+
+    }
+  }
+}

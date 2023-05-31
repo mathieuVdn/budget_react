@@ -1,21 +1,21 @@
 .redirectBtn {
   all: unset;
   width: 48%;
+  color: #ffffff;
   padding: 1rem 1rem;
-  margin: 1rem 2rem;
+  margin: 2rem 2rem;
   border-radius: 1.5rem;
   border: 1px solid transparent;
-  background-color: #5D5A88;
+  background-color: #5d5a88;
   text-align: center;
-  color: #fff;
   font-size: 1.8rem;
   cursor: pointer;
   user-select: none;
   transition: all 0.3s ease-in-out;
 
   &:hover {
+    color: #5d5a88;
     background-color: #ffffff;
-    color: #5D5A88;
-    border: 1px solid #5D5A88;
+    border: 1px solid #5d5a88;
   }
 }

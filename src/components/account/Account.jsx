@@ -21,11 +21,10 @@ const Account = () => {
         dispatch(updateUserFirstName(e.target.value))
     }
     const handleEmail = (e) => {
-        dispatch(updateUserEmail(e.target.value))
+        dispatch(updateUserEmail(e.target.value));
     }
     const handleUpdateUser = async (e)   => {
         e.preventDefault()
-        console.log(user)
         await dispatch(updateUser(user))
         await dispatch(getUser(persistUser.id))
         await dispatch(updatePersistUser(user))

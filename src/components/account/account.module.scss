@@ -1,35 +1,33 @@
-.updateUser{
-    display: flex;
-    align-items: baseline;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    .updateUserForm {
-        width: 100%;
-        max-width: 40rem;
-        padding: 2rem;
+.updateUser {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .updateUserForm {
+    width: 100%;
+    max-width: 40rem;
+    padding: 2rem;
 
     & .update {
-        all: unset;
-        width: 70%;
-        padding: 1rem;
-        margin: 1rem 2rem;
-        border-radius: 1.5rem;
-        border: 1px solid transparent;
-        background-color: #5D5A88;
-        text-align: center;
-        color: #fff;
-        font-size: 1.8rem;
-        cursor: pointer;
-        user-select: none;
-        transition: all 0.3s ease-in-out;
+      all: unset;
+      width: 70%;
+      padding: 1rem;
+      margin: 1rem 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid transparent;
+      background-color: #5d5a88;
+      text-align: center;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease-in-out;
 
-        &:hover {
-            background-color: #ffffff;
-            color: #5D5A88;
-            border: 1px solid #5D5A88;
-        }
+      &:hover {
+        background-color: #ffffff;
+        color: #5d5a88;
+        border: 1px solid #5d5a88;
+      }
     }
-    }
-    }
-
-
+  }
+}

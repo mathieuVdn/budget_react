@@ -8,7 +8,6 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   & + .modalLogin {
-
     background-color: var(--white);
     position: absolute;
     top: 50%;
@@ -18,6 +17,10 @@
     height: 45rem;
     border-radius: 2rem;
     z-index: 2;
+
+    & form {
+      margin-top: 2rem;
+    }
 
     & h2 {
       margin: 0;
@@ -38,6 +41,5 @@
         margin-top: 3rem;
       }
     }
-
   }
 }
