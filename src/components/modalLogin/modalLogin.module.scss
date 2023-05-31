@@ -8,29 +8,38 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   & + .modalLogin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     background-color: var(--white);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50rem;
-    height: 40rem;
+    height: 45rem;
     border-radius: 2rem;
-    padding: 2rem;
     z-index: 2;
+
+    & form {
+      margin-top: 2rem;
+    }
+
+    & h2 {
+      margin: 0;
+    }
+
+    & .error {
+      color: var(--red);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
 
     & > .loginForm {
       width: 70%;
-      margin-top: 3rem;
 
       & > .labelBox {
         margin-top: 3rem;
       }
     }
-
   }
 }

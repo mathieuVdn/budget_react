@@ -1,6 +1,6 @@
 .loginBtn {
   all: unset;
-  border: 1px solid #5D5A88;
+  border: 1px solid #5d5a88;
   border-radius: 1.5rem;
   font-size: 1.8rem;
   color: var(--violet);
@@ -14,8 +14,7 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: #5D5A88;
+    background-color: #5d5a88;
     color: var(--white);
   }
-
 }

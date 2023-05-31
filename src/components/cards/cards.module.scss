@@ -1,0 +1,29 @@
+.cards {
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  margin: 2rem 0.5rem;
+  width: 49rem;
+  border-radius: 2rem;
+
+  & .textCards {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 1100px){
+  .cards{
+    width: 60rem;
+  }
+}
+@media screen and (max-width: 1100px){
+  .cards{
+    display: flex;
+    flex-direction: column;
+    & .bodyCards{
+      display: flex;
+    }
+    & .textCards {
+      padding-right: 1rem;
+      width: 100%;
+    }
+  }
+}

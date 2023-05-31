@@ -1,31 +1,40 @@
-.container {
-  max-width: 1600px;
-  background-color: #ffffff;
-  padding: 0 2rem;
-  margin: 0 auto;
-}
+.mainHomepage {
 
-.description {
-  font-size: 2rem;
-  width: 40%;
-  line-height: 2;
+  .description {
+    font-size: 2rem;
+    width: 40%;
+    line-height: 2;
+    margin: 0.5rem 0;
+  }
+  article {
+    width: 50%;
+  }
+  img {
+    width: 100%;
+    margin-left: 0.5rem;
+  }
 }
+@media screen and (max-width: 1100px) {
+  .mainHomepage {
+    margin-top: 12rem;
 
-.title {
-  color: #5D5A88;
-  background-size: contain;
+  .homepageContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    & article {
+      & > img {
+        display: none;
+      }
+    }
+    & .description {
+      width: 90%;
+      text-align: center;
+    }
+  }
 }
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+}
+@media screen and (max-width: 768px) {
 }

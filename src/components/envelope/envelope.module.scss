@@ -1,0 +1,100 @@
+.envelope {
+  margin-top: 15rem;
+  width: 75%;
+
+  & h2 {
+    color: var(--violet);
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 2rem;
+    padding: 0;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+
+  & .envelopeList {
+    padding: 2rem;
+    user-select: none;
+
+    & .envelopeItem {
+      position: relative;
+      padding: 2rem;
+      width: 75%;
+      margin: 2rem 0.5rem;
+      border-radius: 2rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+      border: 3px solid transparent;
+      cursor: pointer;
+
+      & h3 {
+        margin: 3.5rem 0 2rem 0;
+      }
+
+      & .deleteCross {
+        position: absolute;
+        top: 2rem;
+        right: 3rem;
+        color: var(--violet);
+        cursor: pointer;
+        & img {
+          width: 2.5rem;
+        }
+      }
+      & a {
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    & .selected {
+      border: 3px solid var(--violet);
+    }
+    & a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 auto;
+    }
+
+    &:hover {
+      background: var(--white);
+      color: var(--violet);
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .envelope {
+    & .envelopeList {
+      flex-direction: column;
+      width: 80%;
+      margin: 0 auto;
+      & .envelopeItem {
+        width: 100%;
+      }
+      & .cardsContent {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .envelopeContainer{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .envelope {
+    width: 100%;
+
+    & .envelopeList {
+      width: 100%;
+    }
+
+
+  }
+
+}
