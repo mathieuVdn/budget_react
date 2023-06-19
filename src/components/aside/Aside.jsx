@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import mc from "./aside.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import arrow from "../../assets/img/arrow_back.svg";
+import { TYPE_CHALLENGES,TYPE_EXPENSES, TYPE_SAVINGS } from "../../constants/constant.utils";
 import {
   changeAmount,
   changeAmountSelectEnvelope,
@@ -36,10 +36,10 @@ import { useParams } from "react-router-dom";
 import { sum, objectivePercent } from "../../utils/calcul.utils";
 
 const Aside = (props) => {
-  const { type } = props;
+  const {operation , type } = props;
   const envelope_id = useParams().id;
   const dispatch = useDispatch();
-  const { newEnvelope, selectedEnvelope, selectEnvelope, savings } =
+  const { newEnvelope, selectedEnvelope, selectEnvelope, savings, expenses, challenges } =
     useSelector((store) => store.envelope);
   const { newOperation, selectedOperation, selectOperation, operations } =
     useSelector((store) => store.operations);
@@ -50,10 +50,10 @@ const Aside = (props) => {
   useEffect(() => {
     dispatch(handleSelectEnvelope(null));
     dispatch(handleEnvelopeIdCreate(envelope_id));
-  }, [dispatch, handleSelectEnvelope]);
+  }, [envelope_id, dispatch]);
 
   const handleName = (e) => {
-    if (type === "operation") {
+    if (operation === "operation") {
       if (!!selectOperation) {
         dispatch(changeNameSelectedOperation(e.target.value));
       } else {
@@ -68,7 +68,7 @@ const Aside = (props) => {
     }
   };
   const handleAmount = (e) => {
-    if (type === "operation") {
+    if (operation === "operation") {
       if (!!selectOperation) {
         dispatch(changeAmountSelectedOperation(e.target.value));
       } else {
@@ -98,7 +98,7 @@ const Aside = (props) => {
     }
   };
   const handleInputAmount = () => {
-    if (type === "operation") {
+    if (operation === "operation") {
       if (!!selectOperation) {
         return selectedOperation.amount || "";
       } else {
@@ -122,9 +122,10 @@ const Aside = (props) => {
     dispatch(changeDateOperation(" - - "));
     dispatch(changeAmountOperation(""));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (type === "operation") {
+    if (operation === "operation") {
       if (!!selectOperation) {
         dispatch(updateOperation(selectedOperation));
         dispatch(handleSelectOperation(null));
@@ -155,7 +156,8 @@ const Aside = (props) => {
   };
 
   const percentByEnvelope = () => {
-    savings.map((saving) => {
+    if (type === TYPE_SAVINGS) {
+    savings.forEach((saving) => {
       if (saving.operations === undefined) return [0];
       let objective = saving.amount;
       let amount = sum(
@@ -168,11 +170,42 @@ const Aside = (props) => {
       dispatch(handleDataMultipleRadialBar(percent));
       dispatch(handleLabelsMultipleRadialBar(label));
     });
+  }
+  else if (type === TYPE_EXPENSES) {
+    expenses.forEach(expense => {
+      if (expense.operations === undefined) return [0];
+      let objective = expense.amount;
+      let amount = sum(
+        expense.operations.filter(
+          (operation) => operation.envelope_id === expense.id
+        )
+      );
+      let percent = objectivePercent(amount, objective);
+      const label = expense.name;
+      dispatch(handleDataMultipleRadialBar(percent));
+      dispatch(handleLabelsMultipleRadialBar(label));
+    });
+  }
+  else if (type === TYPE_CHALLENGES) {
+    challenges.forEach((challenge) => {
+      if (challenge.operations === undefined) return [0];
+      let objective = challenge.amount;
+      let amount = sum(
+        challenge.operations.filter(
+          (operation) => operation.envelope_id === challenge.id
+        )
+      );
+      let percent = objectivePercent(amount, objective);
+      const label = challenge.name;
+      dispatch(handleDataMultipleRadialBar(percent));
+      dispatch(handleLabelsMultipleRadialBar(label));
+    });
   };
+};
 
   return (
     <aside className={`${mc.aside}`}>
-      {type === "operation" ? (
+      {operation === "operation" ? (
         !!selectOperation ? (
           <h3>Modifier une opération </h3>
         ) : (
@@ -195,7 +228,7 @@ const Aside = (props) => {
             onChange={(e) => handleName(e)}
           />
           <label htmlFor="name">
-            {type === `operation` ? `Nom de l'opération` : `Nom de l'enveloppe`}
+            {operation === `operation` ? `Nom de l'opération` : `Nom de l'enveloppe`}
           </label>
         </div>
         <div className={`${mc.labelBoxEnvelope}`}>
@@ -209,7 +242,7 @@ const Aside = (props) => {
           />
           <label htmlFor="amount">Montant de l'objectif </label>
         </div>
-        {type === "operation" ? (
+        {operation === "operation" ? (
           <div className={`${mc.labelBoxEnvelope}`}>
             <input
               type="date"

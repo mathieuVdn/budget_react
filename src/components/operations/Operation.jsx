@@ -52,7 +52,7 @@ const Operation = () => {
             <div className={`flex ai-center`}>
               <span>
                 <NavLink to={`http://localhost:3000/dashboard/envelopes/`}>
-                  <img src={arrowBack} alt="" />
+                  <img src={arrowBack} alt="icone d'une " />
                 </NavLink>
               </span>
               <h2>{env.name}</h2>
@@ -102,7 +102,7 @@ const Operation = () => {
           </div>
         ))}
       </main>
-      <Aside type={`operation`} />
+      <Aside  operation={"operation"} />
     </div>
   );
 };

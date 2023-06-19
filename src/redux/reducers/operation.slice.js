@@ -5,8 +5,7 @@ import {
   putRequest,
   deleteRequest,
 } from "../../api/api";
-import { getItem, setItem } from "../../utils/storage.utils";
-import {sortByDate} from "../../utils/sort.utils";
+import { getItem} from "../../utils/storage.utils";
 
 export const getOperation = createAsyncThunk(
   `/envelopes/operation`,

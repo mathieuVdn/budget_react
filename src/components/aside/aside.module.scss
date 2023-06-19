@@ -51,7 +51,7 @@
     width: 100%;
     padding: 1rem 1rem;
     font-size: 1.6rem;
-    color: var(--white);
+    color: var(--bg-color);
     margin-bottom: 3rem;
     border: 1px solid var(--violet);
     border-radius: 2rem;
@@ -60,7 +60,7 @@
     cursor: pointer;
     transition: 0.5s;
     &:hover {
-      background: var(--white);
+      background: var(--bg-color);
       color: var(--violet);
     }
   }

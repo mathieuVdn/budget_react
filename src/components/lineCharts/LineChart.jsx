@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import fr from "apexcharts/dist/locales/fr.json";
 const LineChart = (props) => {
-  const { data, name } = props;
+  const { data} = props;
   console.log(new Date("2018-02-12").getTime());
   const series = [
     {

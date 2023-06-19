@@ -116,6 +116,7 @@ const ColumnCharts = (props) => {
         series={series}
         type="bar"
         height={350}
+        
       />
     </div>
   );

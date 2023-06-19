@@ -1,14 +1,10 @@
 import React from "react";
 import mc from "./redirectBtn.module.scss";
 import { NavLink } from "react-router-dom";
-import { toggleMenuBurger } from "../../../redux/reducers/login.slice";
-import { useDispatch } from "react-redux";
 
 const RedirectBtn = (props) => {
-  const { namebtn, url, handleMenuBurger, functionOnClick } = props;
-  const dispatch = useDispatch();
+  const { namebtn, url, functionOnClick } = props;
 
-  console.log("functionOnClick", functionOnClick);
   return (
     <>
       {!!functionOnClick ? (
