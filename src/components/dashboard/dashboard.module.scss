@@ -1,8 +1,12 @@
 main {
+margin : 10rem 0;
+.rotateGraph{
+  margin: 0 auto;
 
 
+}
 .dashboard {
-  width: 95%;
+  width: 99.2%;
   padding: 2rem 3rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   border-radius: 2rem;
@@ -33,7 +37,6 @@ main {
       border: 1px solid #5d5a88;
     }
   }
-
   & .dashboardGraph {
     width: 75%;
     height: 30rem;
@@ -81,10 +84,16 @@ main {
     }
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   main {
     & .dashboard {
-      height: 72rem;
+      height: auto;
+      & .actionButton {
+        display: none;
+      }
+      & .dashboardGraph {
+        display: none;
+      }
     }
   }
 }

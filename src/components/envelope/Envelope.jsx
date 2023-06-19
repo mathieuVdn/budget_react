@@ -24,15 +24,13 @@ import MutipleRadialBar from "../mutipleRadialBar/MutipleRadialBar";
 import arrowBack from "../../assets/img/arrow_back.svg";
 import deleteIcon from "../../assets/img/deleteIcon.svg";
 import { sum, objectivePercent } from "../../utils/calcul.utils";
-import arrowCircleLeft from "../../assets/img/arrow_circle_left.svg";
 
 const Envelope = (props) => {
   const { type, envelopesType } = props;
   const dispatch = useDispatch();
   const { persistUser } = useSelector((store) => store.persistedReducer);
-  const { selectEnvelope, savings, selectedEnvelope } = useSelector((store) => store.envelope);
+  const { selectEnvelope, selectedEnvelope } = useSelector((store) => store.envelope);
   const [titlePage, setTitlePage] = useState("");
-  const [url, setUrl] = useState("");
   const { visible, labels, dataMultipleRadialBar } = useSelector(
     (store) => store.graphics
   );
@@ -52,15 +50,13 @@ const Envelope = (props) => {
   useEffect(() => {
     if (type === TYPE_SAVINGS) {
       setTitlePage("Mes Epargnes");
-      setUrl("savings");
     } else if (type === TYPE_EXPENSES) {
       setTitlePage("Mes Dépenses");
-      setUrl("expenses");
     } else if (type === TYPE_CHALLENGES) {
       setTitlePage("Mes Défis");
-      setUrl("challenges");
     }
   }, [type, setTitlePage]);
+
   const handleDelete = (e, id) => {
     e.preventDefault();
     dispatch(deleteEnvelope(id));
@@ -116,7 +112,7 @@ const Envelope = (props) => {
                     className={mc.deleteCross}
                     onClick={(e) => handleDelete(e, envelope.id)}
                   >
-                    <img src={deleteIcon} alt="" />
+                    <img src={deleteIcon} alt="icone représentant une poubelle pour la suppression d'enveloppe" />
                   </span>
                   <h3>{envelope.name}</h3>
                   <div className={`${mc.cardsContent} flex ai-center jc-space-around`}>
@@ -141,7 +137,7 @@ const Envelope = (props) => {
           </div>
         )}
       </main>
-      <Aside />
+      <Aside type={type} />
 
     </div>
   );

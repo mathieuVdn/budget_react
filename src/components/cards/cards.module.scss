@@ -11,13 +11,9 @@
 
 @media screen and (max-width: 1100px){
   .cards{
-    width: 60rem;
-  }
-}
-@media screen and (max-width: 1100px){
-  .cards{
     display: flex;
     flex-direction: column;
+    width: 60rem;
     & .bodyCards{
       display: flex;
     }
@@ -26,4 +22,15 @@
       width: 100%;
     }
   }
+
 }
+@media screen and (max-width: 600px){
+  .bodyCards{
+    width: 100%;
+    flex-direction: column;
+    & .textCards > p{
+      text-align: center;
+    }
+  }
+}
+  

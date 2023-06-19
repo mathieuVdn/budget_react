@@ -1,5 +1,5 @@
 .envelope {
-  margin-top: 15rem;
+  margin-top: 8rem;
   width: 75%;
 
   & h2 {
@@ -20,7 +20,7 @@
     & .envelopeItem {
       position: relative;
       padding: 2rem;
-      width: 75%;
+      width: 45%;
       margin: 2rem 0.5rem;
       border-radius: 2rem;
       box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
@@ -51,15 +51,15 @@
       border: 3px solid var(--violet);
     }
     & a {
-      color: var(--white);
+      color: var(--bg-color);
       text-decoration: none;
       margin: 0 auto;
-    }
 
     &:hover {
-      background: var(--white);
+      background: var(--bg-color);
       color: var(--violet);
     }
+  }
   }
 }
 

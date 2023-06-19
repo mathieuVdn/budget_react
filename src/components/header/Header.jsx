@@ -7,16 +7,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, toggleMenuBurger } from "../../redux/reducers/login.slice";
 import RedirectBtn from "../button/redirectBtn/RedirectBtn";
 import close from "../../assets/img/close.svg";
-import React  from 'react';
+import {React, useState}  from 'react';
 const Header = () => {
+
   const { logged, persistUser, menuBurger } = useSelector(
     (store) => store.persistedReducer
   );
   const dispatch = useDispatch();
+  const [active, setActive] = useState(false);
 
   const handleMenuBurger = () => {
     dispatch(toggleMenuBurger());
   };
+
+  const handleActive = () => {
+    setActive(!active);
+  };
+
   const userLogout = () => {
     localStorage.removeItem("token");
     dispatch(logout());

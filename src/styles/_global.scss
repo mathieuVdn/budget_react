@@ -6,16 +6,22 @@
   font-size: 62.5%;
   --violet: #5d5a88;
   --light-violet: #d6d6e1;
-  --white: #ffffff;
+  --bg-color: #ffffff;
   --black: #000000;
   --grey: #d2e4fa;
   --red: #d05353;
   --texte: #414141;
 }
+@media (prefer-color-scheme : dark){
+  :root {
+    --bg-color: #000000;
+  }
+}
 
 body {
   font-size: 1.8rem;
   font-family: "DM Sans", sans-serif;
+  background-color: var(--bg-color);
 }
 
 h1 {
@@ -25,7 +31,7 @@ h1 {
   letter-spacing: 0.2rem;
   text-align: center;
   max-width: 800px;
-  margin: 6rem auto;
+  margin: 4rem auto;
   font-variant: small-caps;
 }
 
